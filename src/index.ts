@@ -1,6 +1,7 @@
 import { config } from 'dotenv';
 import { Client, ClientOptions, Intents } from 'discord.js'
 config();
+import { createServer } from 'http'; 
 
 var token = process.env['BOT_TOKEN'] as string;
 
@@ -28,4 +29,11 @@ client.on("messageCreate", (message) => {
     if(message.content === "chatamata"){
         message.reply("Shibu  da kmn asos");
     }
+});
+
+var server = createServer();
+
+var port = process.env['PORT'] as string;
+server.listen(port,()=>{
+    console.log(`Server started on port ${port}`);
 });
